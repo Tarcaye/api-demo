@@ -16,7 +16,7 @@ public class ContractController {
     }
 
     @GetMapping("/customer/{customerId}/contracts")
-    ContractsResponse all(@PathVariable String customerId){
+    ContractsResponse all(@PathVariable String customerId) {
         return allContracts.findFor(customerId).map(ContractsResponse::of)
                 .orElseThrow(CustomerNotFoundException::new);
     }

@@ -9,15 +9,14 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler 
-  extends ResponseEntityExceptionHandler {
- 
-    @ExceptionHandler(value
-      = { CustomerNotFoundException.class, IllegalStateException.class })
+public class RestResponseEntityExceptionHandler
+        extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value = {CustomerNotFoundException.class, IllegalStateException.class})
     protected ResponseEntity<Object> handleConflict(
-      RuntimeException ex, WebRequest request) {
+            RuntimeException ex, WebRequest request) {
         String bodyOfResponse = "Customer not found";
-        return handleExceptionInternal(ex, bodyOfResponse, 
-          new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }
