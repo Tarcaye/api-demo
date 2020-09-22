@@ -8,5 +8,6 @@ class ContractControllerIntegrationTest {
 
     @Test
     void name() {
+
     }
 }

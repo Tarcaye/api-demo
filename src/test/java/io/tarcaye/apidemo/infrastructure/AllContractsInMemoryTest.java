@@ -1,14 +1,11 @@
 package io.tarcaye.apidemo.infrastructure;
 
 import io.tarcaye.apidemo.domain.model.Contracts;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class AllContractsInMemoryTest {
 
@@ -17,7 +14,7 @@ class AllContractsInMemoryTest {
     @Test
     void return_the_contracts_of_an_existing_customer() {
         String existingCustomerId = "9001";
-        assertThat(allContractsInMemory.findFor(existingCustomerId)).isEmpty();
+        assertThat(allContractsInMemory.findFor(existingCustomerId)).hasValueSatisfying(it -> assertThat(it.asList()).hasSize(2));
     }
 
     @Test
