@@ -28,7 +28,7 @@ public class ContractsResponse {
         return unmodifiableList(contracts);
     }
 
-    private static class ContractResponse {
+    public static class ContractResponse {
         private final long id;
         private final Type type;
 
