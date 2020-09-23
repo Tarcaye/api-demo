@@ -2,9 +2,11 @@ package io.tarcaye.apidemo.exposition.model;
 
 import io.tarcaye.apidemo.domain.model.Contract;
 import io.tarcaye.apidemo.domain.model.Contracts;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toList;
 
@@ -14,6 +16,9 @@ public class ContractsResponse {
 
     public ContractsResponse(List<ContractResponse> contracts) {
         this.contracts = contracts;
+    }
+    public ContractsResponse() {
+        this.contracts = emptyList();
     }
 
     public static ContractsResponse of(Contracts contracts) {
@@ -32,6 +37,10 @@ public class ContractsResponse {
         private final long id;
         private final Type type;
 
+        public ContractResponse() {
+            id=0;
+            type = null;
+        }
         public ContractResponse(long id, Type type) {
 
             this.id = id;
