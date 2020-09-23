@@ -6,10 +6,7 @@ import io.tarcaye.apidemo.domain.model.Customer;
 import io.tarcaye.apidemo.exposition.model.ContractRequest;
 import io.tarcaye.apidemo.exposition.model.ContractsResponse;
 import io.tarcaye.apidemo.exposition.model.ContractsResponse.ContractResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ContractController {
@@ -29,8 +26,8 @@ public class ContractController {
     }
 
     @PostMapping("/customers/{customerId}/contracts")
-    ContractResponse add(@PathVariable String customerId) {
-        Contract contract = new Contract(Customer.of(customerId));
+    ContractResponse add(@PathVariable String customerId, @RequestBody ContractRequest contractRequest) {
+        Contract contract = contractRequest.toCore(customerId);
         allContracts.add(contract);
         return ContractResponse.from(contract);
     }

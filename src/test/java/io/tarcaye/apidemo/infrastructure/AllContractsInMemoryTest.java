@@ -35,7 +35,7 @@ class AllContractsInMemoryTest {
     void add_contract() {
         Customer newCustomer = Customer.of("2");
 
-        allContractsInMemory.add(new Contract(newCustomer));
+        allContractsInMemory.add(new Contract(newCustomer, 1L, Contract.Type.ACHAT));
 
         Optional<Contracts> contracts = allContractsInMemory.findFor(newCustomer);
         assertThat(contracts).hasValueSatisfying(it -> assertThat(it.asList()).hasSize(1));

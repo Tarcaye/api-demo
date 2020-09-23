@@ -1,1 +1,1 @@
-{"contracts":[{"id":113,"type":"ACHAT"},{"id":113,"type":"ACHAT"},{"id":113,"type":"ACHAT"},{"id":113,"type":"ACHAT"}]}
+{"contracts":[{"id":12,"type":"ACHAT"},{"id":14,"type":"ACHAT"},{"id":156,"type":"ACHAT"},{"id":178,"type":"LOCATION"}]}

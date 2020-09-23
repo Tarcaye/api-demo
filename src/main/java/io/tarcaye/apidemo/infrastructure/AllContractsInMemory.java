@@ -14,11 +14,11 @@ import static java.util.Arrays.asList;
 @Repository
 public class AllContractsInMemory implements AllContracts {
 
-    private List<Contract> contracts;
+    private final List<Contract> contracts;
 
     public AllContractsInMemory() {
         Customer customer = Customer.of("9001");
-        contracts = new ArrayList<>(asList(new Contract(customer), new Contract(customer)));
+        contracts = new ArrayList<>(asList(new Contract(customer, 1L, Contract.Type.ACHAT), new Contract(customer, 2L, Contract.Type.ACHAT)));
     }
 
     @Override
