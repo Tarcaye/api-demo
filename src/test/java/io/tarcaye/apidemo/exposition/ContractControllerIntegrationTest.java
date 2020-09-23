@@ -49,7 +49,43 @@ class ContractControllerIntegrationTest {
 
     @Test
     void getContracts() throws Exception {
-        String uri = "/customer/9001/contracts";
+        String uri = "/customers/9001/contracts";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Approvals.verify(content);
+    }
+
+    @Test
+    void addContract() throws Exception {
+        String uri = "/customers/21/contracts";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Approvals.verify(content);
+    }
+
+
+
+
+    @Test
+    void addAndRetrieveContracts() throws Exception {
+        String uri = "/customers/42/contracts";
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 

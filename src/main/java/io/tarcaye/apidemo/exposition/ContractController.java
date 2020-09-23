@@ -20,7 +20,7 @@ public class ContractController {
         this.allContracts = allContracts;
     }
 
-    @GetMapping("/customer/{customerId}/contracts")
+    @GetMapping("/customers/{customerId}/contracts")
     ContractsResponse all(@PathVariable String customerId) {
         return allContracts
                 .findFor(Customer.of(customerId))
@@ -28,8 +28,8 @@ public class ContractController {
                 .orElseThrow(CustomerNotFoundException::new);
     }
 
-    @PostMapping("/customer/{customerId}/contracts")
-    ContractResponse add(@PathVariable String customerId, ContractRequest contractRequest) {
+    @PostMapping("/customers/{customerId}/contracts")
+    ContractResponse add(@PathVariable String customerId) {
         Contract contract = new Contract(Customer.of(customerId));
         allContracts.add(contract);
         return ContractResponse.from(contract);
